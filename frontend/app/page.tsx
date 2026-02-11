@@ -264,41 +264,62 @@ export default function Home() {
   });
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 text-gray-900 overflow-hidden">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900 overflow-hidden">
       {/* Top Navigation Bar */}
-      <nav className="h-14 bg-white border-b border-gray-200 flex items-center px-4 lg:px-6 gap-4 flex-shrink-0 shadow-sm">
-        <div className="flex items-center gap-3">
-          <img 
-            src="/images_PhilHealth_Logo.png" 
-            alt="PhilHealth - Your Partner in Health" 
-            className="h-10"
-          />
+      <nav className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200/50 flex items-center px-4 lg:px-6 gap-4 flex-shrink-0 shadow-lg shadow-gray-200/50">
+        <div className="flex items-center gap-4">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#009E49] to-[#F4C400] rounded-xl blur-md opacity-25 group-hover:opacity-40 transition-opacity"></div>
+            <img 
+              src="/images_PhilHealth_Logo.png" 
+              alt="PhilHealth - Your Partner in Health" 
+              className="h-11 relative z-10 drop-shadow-lg transition-transform group-hover:scale-105 duration-300"
+            />
+          </div>
+          
+          <div className="hidden md:block border-l border-gray-300 pl-4">
+            <h1 className="text-base font-bold text-gray-900 tracking-tight leading-tight">
+              DATABASE MANAGEMENT SYSTEM
+            </h1>
+            <p className="text-xs text-[#009E49] font-semibold tracking-wide">
+              Healthcare Data Portal
+            </p>
+          </div>
         </div>
         
         <button 
-          className="lg:hidden ml-auto p-2 hover:bg-gray-100 rounded-lg"
+          className="lg:hidden ml-auto p-2 hover:bg-gray-100 rounded-xl transition-all duration-200 hover:shadow-md active:scale-95"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <Icons.Close /> : <Icons.Menu />}
         </button>
         
-        {/* <div className="hidden lg:flex items-center gap-2 ml-4">
-          <select className="bg-gray-50 text-gray-900 text-sm px-3 py-1.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#009E49] focus:border-transparent">
-            <option>philhealth_prod</option>
-            <option>philhealth_staging</option>
-            <option>philhealth_dev</option>
-          </select>
+        {/* <div className="hidden lg:flex items-center gap-3 ml-4">
+          <div className="flex items-center gap-2 bg-gradient-to-r from-gray-50 to-white px-4 py-2 rounded-xl border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+              <span className="text-xs text-gray-600 font-medium">Connected:</span>
+            </div>
+            <select className="bg-transparent text-gray-900 text-sm font-semibold focus:outline-none cursor-pointer">
+              <option>philhealth_prod</option>
+              <option>philhealth_staging</option>
+              <option>philhealth_dev</option>
+            </select>
+          </div>
         </div> */}
         
-        <div className="hidden lg:flex ml-auto items-center gap-2">
-          <button className="text-gray-600 hover:text-[#009E49] text-sm px-3 py-1.5 hover:bg-gray-50 rounded-lg transition-colors font-medium">
+        <div className="hidden lg:flex ml-auto items-center gap-3">
+          <button className="text-gray-600 hover:text-[#009E49] text-sm px-4 py-2 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-200 font-medium hover:shadow-md active:scale-95">
             Export
           </button>
-          <button className="text-gray-600 hover:text-[#009E49] text-sm px-3 py-1.5 hover:bg-gray-50 rounded-lg transition-colors font-medium">
+          <button className="text-gray-600 hover:text-[#009E49] text-sm px-4 py-2 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-200 font-medium hover:shadow-md active:scale-95">
             Import
           </button>
-          <div className="w-8 h-8 bg-gradient-to-br from-[#F4C400] to-[#F4C400] rounded-full flex items-center justify-center text-[#009E49] font-bold text-xs shadow-md ml-2">
-            AD
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#F4C400] via-yellow-300 to-amber-400 rounded-full blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+            <div className="relative w-10 h-10 bg-gradient-to-br from-[#F4C400] to-amber-500 rounded-full flex items-center justify-center text-[#009E49] font-bold text-sm shadow-lg cursor-pointer hover:scale-110 transition-transform duration-200">
+              AD
+            </div>
           </div>
         </div>
       </nav>
@@ -312,16 +333,16 @@ export default function Home() {
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar */}
         <div className={`
-          ${sidebarCollapsed ? 'w-14' : 'w-64'} 
+          ${sidebarCollapsed ? 'w-16' : 'w-72'} 
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
           fixed lg:relative inset-y-0 left-0 z-50
-          bg-white border-r border-gray-200 flex flex-col transition-all duration-300 shadow-lg lg:shadow-none
+          bg-white/95 backdrop-blur-md border-r border-gray-200/50 flex flex-col transition-all duration-300 shadow-2xl lg:shadow-lg
         `}>
-          <div className="h-12 border-b border-gray-200 flex items-center justify-between px-3 bg-gray-50">
-            {!sidebarCollapsed && <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">Tables</span>}
+          <div className="h-14 border-b border-gray-200/50 flex items-center justify-between px-4 bg-gradient-to-r from-gray-50 to-white">
+            {!sidebarCollapsed && <span className="text-xs font-bold text-gray-700 uppercase tracking-widest">Tables</span>}
             <button 
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-1 text-gray-500 hover:text-[#009E49] hover:bg-gray-100 rounded transition-colors"
+              className="p-2 text-gray-500 hover:text-[#009E49] hover:bg-green-50 rounded-xl transition-all duration-200 hover:shadow-md active:scale-90"
             >
               {sidebarCollapsed ? '→' : '←'}
             </button>
@@ -340,10 +361,10 @@ export default function Home() {
                         setMobileMenuOpen(false);
                         setSelectedRows(new Set());
                       }}
-                      className={`w-full text-left px-3 py-2 rounded-md flex items-center gap-2 group transition-all text-sm ${
+                      className={`w-full text-left px-4 py-3 rounded-xl flex items-center gap-3 group transition-all duration-200 text-sm font-medium ${
                         selectedTable === table.name 
-                          ? 'bg-[#009E49] text-white shadow-sm' 
-                          : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-gradient-to-r from-[#009E49] to-emerald-600 text-white shadow-lg shadow-green-500/30 scale-[1.02]' 
+                          : 'text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-green-50 hover:shadow-md active:scale-95'
                       }`}
                     >
                       <div className={selectedTable === table.name ? 'text-white' : 'text-[#009E49]'}>
@@ -387,27 +408,27 @@ export default function Home() {
         </div>
 
         {/* Main Table Editor Panel */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-white">
+        <div className="flex-1 flex flex-col overflow-hidden bg-white/95 backdrop-blur-sm rounded-tl-2xl shadow-xl border-t border-l border-gray-200/50">
           {/* Toolbar */}
-          <div className="border-b border-gray-200 bg-white">
+          <div className="border-b border-gray-200/50 bg-gradient-to-r from-white to-gray-50">
             {/* Top Tabs */}
-            <div className="flex items-center px-4 pt-3 gap-3 border-b border-gray-200">
+            <div className="flex items-center px-6 pt-4 gap-4 border-b border-gray-200/50">
               <button 
                 onClick={() => setActiveTab("data")}
-                className={`pb-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+                className={`pb-3 px-3 text-sm font-semibold border-b-2 transition-all duration-200 ${
                   activeTab === "data" 
-                    ? 'border-[#009E49] text-[#009E49]' 
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
+                    ? 'border-[#009E49] text-[#009E49] shadow-sm' 
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
                 Data
               </button>
               <button 
                 onClick={() => setActiveTab("definition")}
-                className={`pb-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+                className={`pb-3 px-3 text-sm font-semibold border-b-2 transition-all duration-200 ${
                   activeTab === "definition" 
-                    ? 'border-[#009E49] text-[#009E49]' 
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
+                    ? 'border-[#009E49] text-[#009E49] shadow-sm' 
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
                 Definition
@@ -416,18 +437,18 @@ export default function Home() {
             
             {/* Action Bar */}
             {activeTab === "data" && (
-              <div className="flex flex-wrap items-center justify-between px-4 py-2.5 gap-2">
+              <div className="flex flex-wrap items-center justify-between px-6 py-3 gap-3">
                 <div className="flex items-center gap-2">
-                  <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded border border-gray-300 transition-colors">
+                  <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 rounded-xl border border-gray-300 transition-all duration-200 font-medium hover:shadow-md active:scale-95">
                     <Icons.Filter />
                     Filter
                   </button>
-                  <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded border border-gray-300 transition-colors">
+                  <button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 rounded-xl border border-gray-300 transition-all duration-200 font-medium hover:shadow-md active:scale-95">
                     Sort
                   </button>
                   <button 
                     onClick={() => setIsAddingRow(true)}
-                    className="flex items-center gap-2 px-3 py-1.5 text-sm text-white bg-[#009E49] hover:bg-[#007A38] rounded transition-colors font-medium"
+                    className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-gradient-to-r from-[#009E49] to-emerald-600 hover:from-emerald-600 hover:to-[#009E49] rounded-xl transition-all duration-200 font-semibold shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 active:scale-95"
                   >
                     <Icons.Plus />
                     Insert
@@ -435,7 +456,7 @@ export default function Home() {
                   {selectedRows.size > 0 && (
                     <button 
                       onClick={handleDeleteSelected}
-                      className="flex items-center gap-2 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 rounded border border-red-300 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-rose-50 rounded-xl border border-red-300 transition-all duration-200 font-medium hover:shadow-md hover:border-red-400 active:scale-95"
                     >
                       <Icons.Trash />
                       Delete {selectedRows.size}
@@ -443,15 +464,15 @@ export default function Home() {
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="relative">
+                  <div className="relative group">
                     <input
                       type="text"
                       placeholder="Search..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-8 pr-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#009E49] focus:border-transparent"
+                      className="pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#009E49] focus:border-transparent transition-all shadow-sm hover:shadow-md"
                     />
-                    <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400">
+                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                       <Icons.Search />
                     </div>
                   </div>
@@ -460,7 +481,7 @@ export default function Home() {
                       setSearchTerm("");
                       setSelectedRows(new Set());
                     }}
-                    className="p-1.5 text-gray-700 hover:bg-gray-100 rounded transition-colors"
+                    className="p-2 text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 rounded-xl transition-all duration-200 hover:shadow-md active:scale-90"
                   >
                     <Icons.Refresh />
                   </button>
@@ -473,15 +494,15 @@ export default function Home() {
           {activeTab === "data" && (
             <div className="flex-1 overflow-auto">
               {isAddingRow && (
-                <div className="border-b-2 border-[#F4C400] bg-yellow-50">
+                <div className="border-b-3 border-[#F4C400] bg-gradient-to-r from-yellow-50 via-amber-50 to-yellow-50 shadow-lg shadow-yellow-500/20">
                   <table className="w-full border-collapse">
                     <tbody>
                       <tr className="bg-white">
-                        <td className="px-3 py-2 border-r border-gray-200 w-10">
+                        <td className="px-4 py-3 border-r border-gray-200 w-10">
                           <div className="flex items-center justify-center gap-2">
                             <button
                               onClick={handleAddRow}
-                              className="text-[#009E49] hover:text-[#007A38] p-1"
+                              className="text-[#009E49] hover:text-[#007A38] p-1.5 hover:bg-green-50 rounded-lg transition-all active:scale-90"
                               title="Save"
                             >
                               ✓
@@ -491,7 +512,7 @@ export default function Home() {
                                 setIsAddingRow(false);
                                 setNewRowData({});
                               }}
-                              className="text-red-600 hover:text-red-700 p-1"
+                              className="text-red-600 hover:text-red-700 p-1.5 hover:bg-red-50 rounded-lg transition-all active:scale-90"
                               title="Cancel"
                             >
                               ✕
@@ -499,13 +520,13 @@ export default function Home() {
                           </div>
                         </td>
                         {columns.map((col) => (
-                          <td key={col} className="px-3 py-2 border-r border-gray-200 min-w-[150px]">
+                          <td key={col} className="px-4 py-3 border-r border-gray-200 min-w-[150px]">
                             <input
                               type="text"
                               value={newRowData[col] || ''}
                               onChange={(e) => setNewRowData({...newRowData, [col]: e.target.value})}
                               placeholder={col}
-                              className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#009E49]"
+                              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009E49] focus:border-transparent transition-all shadow-sm hover:shadow-md"
                             />
                           </td>
                         ))}
@@ -516,39 +537,39 @@ export default function Home() {
               )}
               
               <table className="w-full border-collapse">
-                <thead className="bg-gray-50 sticky top-0 z-10">
+                <thead className="bg-gradient-to-r from-gray-50 to-gray-100 sticky top-0 z-10 shadow-lg">
                   <tr>
-                    <th className="px-3 py-2 border-r border-b border-gray-200 w-10 bg-gray-50">
+                    <th className="px-4 py-3 border-r border-b border-gray-200/50 w-10 bg-gradient-to-r from-gray-50 to-gray-100">
                       <input
                         type="checkbox"
                         checked={selectedRows.size === currentTableData.length && currentTableData.length > 0}
                         onChange={toggleSelectAll}
-                        className="rounded border-gray-300 text-[#009E49] focus:ring-[#009E49]"
+                        className="rounded border-gray-300 text-[#009E49] focus:ring-[#009E49] cursor-pointer transition-all hover:scale-110"
                       />
                     </th>
                     {columns.map((col) => (
-                      <th key={col} className="text-left text-xs font-semibold text-gray-700 px-3 py-2 border-r border-b border-gray-200 bg-gray-50 min-w-[150px]">
+                      <th key={col} className="text-left text-xs font-bold text-gray-700 px-4 py-3 border-r border-b border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100 min-w-[150px] uppercase tracking-wide">
                         {col}
                       </th>
                     ))}
-                    <th className="px-3 py-2 border-b border-gray-200 bg-gray-50 w-20"></th>
+                    <th className="px-4 py-3 border-b border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100 w-20"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredData.map((row: any) => (
-                    <tr key={row.id} className="hover:bg-gray-50 group">
-                      <td className="px-3 py-2 border-r border-b border-gray-200">
+                    <tr key={row.id} className="hover:bg-gradient-to-r hover:from-green-50/30 hover:to-emerald-50/30 group transition-all duration-150 border-b border-gray-100 last:border-0">
+                      <td className="px-4 py-3 border-r border-gray-200/50">
                         <input
                           type="checkbox"
                           checked={selectedRows.has(row.id)}
                           onChange={() => toggleRowSelection(row.id)}
-                          className="rounded border-gray-300 text-[#009E49] focus:ring-[#009E49]"
+                          className="rounded border-gray-300 text-[#009E49] focus:ring-[#009E49] cursor-pointer transition-all hover:scale-110"
                         />
                       </td>
                       {columns.map((col) => (
                         <td 
                           key={col} 
-                          className="px-3 py-2 border-r border-b border-gray-200 min-w-[150px]"
+                          className="px-4 py-3 border-r border-gray-200/50 min-w-[150px] cursor-pointer hover:bg-white/50"
                           onDoubleClick={() => {
                             setEditingCell({ rowId: row.id, field: col });
                             setEditValue(row[col]);
@@ -568,32 +589,32 @@ export default function Home() {
                                 }
                               }}
                               autoFocus
-                              className="w-full px-2 py-1 text-sm border border-[#009E49] rounded focus:outline-none focus:ring-1 focus:ring-[#009E49]"
+                              className="w-full px-3 py-2 text-sm border-2 border-[#009E49] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009E49] shadow-lg"
                             />
                           ) : (
                             <div className="text-sm text-gray-900 truncate">
                               {col === 'status' ? (
-                                <span className={`px-2 py-0.5 rounded-full text-xs ${
-                                  row[col]?.toLowerCase() === 'active' ? 'bg-green-100 text-green-700' :
-                                  row[col]?.toLowerCase() === 'paid' ? 'bg-blue-100 text-blue-700' :
-                                  row[col]?.toLowerCase() === 'approved' ? 'bg-green-100 text-green-700' :
-                                  row[col]?.toLowerCase() === 'processing' ? 'bg-yellow-100 text-yellow-700' :
-                                  row[col]?.toLowerCase() === 'pending' ? 'bg-orange-100 text-orange-700' :
-                                  'bg-gray-100 text-gray-700'
+                                <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-sm ${
+                                  row[col]?.toLowerCase() === 'active' ? 'bg-gradient-to-r from-green-100 to-emerald-100 text-green-700' :
+                                  row[col]?.toLowerCase() === 'paid' ? 'bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700' :
+                                  row[col]?.toLowerCase() === 'approved' ? 'bg-gradient-to-r from-green-100 to-emerald-100 text-green-700' :
+                                  row[col]?.toLowerCase() === 'processing' ? 'bg-gradient-to-r from-yellow-100 to-amber-100 text-yellow-700' :
+                                  row[col]?.toLowerCase() === 'pending' ? 'bg-gradient-to-r from-orange-100 to-red-100 text-orange-700' :
+                                  'bg-gradient-to-r from-gray-100 to-slate-100 text-gray-700'
                                 }`}>
                                   {row[col]}
                                 </span>
                               ) : (
-                                row[col] || <span className="text-gray-400">NULL</span>
+                                row[col] || <span className="text-gray-400 italic">NULL</span>
                               )}
                             </div>
                           )}
                         </td>
                       ))}
-                      <td className="px-2 py-2 border-b border-gray-200">
+                      <td className="px-3 py-3 border-gray-200/50">
                         <button
                           onClick={() => handleDeleteRow(row.id)}
-                          className="opacity-0 group-hover:opacity-100 p-1.5 text-red-600 hover:bg-red-50 rounded transition-all"
+                          className="opacity-0 group-hover:opacity-100 p-2 text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-rose-50 rounded-lg transition-all duration-200 hover:shadow-md active:scale-90"
                           title="Delete row"
                         >
                           <Icons.Trash />
@@ -623,32 +644,35 @@ export default function Home() {
 
           {/* Definition Tab */}
           {activeTab === "definition" && (
-            <div className="flex-1 overflow-auto p-6">
+            <div className="flex-1 overflow-auto p-8 bg-gradient-to-br from-gray-50 to-white">
               <div className="max-w-5xl mx-auto">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Table: {selectedTable}</h3>
-                  <p className="text-sm text-gray-600">Schema definition and column information</p>
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+                    <span className="w-2 h-8 bg-gradient-to-b from-[#009E49] to-emerald-600 rounded-full"></span>
+                    Table: {selectedTable}
+                  </h3>
+                  <p className="text-sm text-gray-600 ml-5">Schema definition and column information</p>
                 </div>
                 
-                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                <div className="bg-white rounded-2xl border border-gray-200/50 overflow-hidden shadow-xl shadow-gray-200/50">
                   <table className="w-full">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
                       <tr>
-                        <th className="text-left text-xs font-semibold text-gray-700 px-4 py-3 border-b">Column</th>
-                        <th className="text-left text-xs font-semibold text-gray-700 px-4 py-3 border-b">Type</th>
-                        <th className="text-left text-xs font-semibold text-gray-700 px-4 py-3 border-b">Default</th>
+                        <th className="text-left text-xs font-bold text-gray-700 px-6 py-4 border-b border-gray-200/50 uppercase tracking-wide">Column</th>
+                        <th className="text-left text-xs font-bold text-gray-700 px-6 py-4 border-b border-gray-200/50 uppercase tracking-wide">Type</th>
+                        <th className="text-left text-xs font-bold text-gray-700 px-6 py-4 border-b border-gray-200/50 uppercase tracking-wide">Default</th>
                       </tr>
                     </thead>
                     <tbody>
                       {columns.map((col, idx) => (
-                        <tr key={col} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          <td className="px-4 py-3 text-sm font-medium text-gray-900 border-b">{col}</td>
-                          <td className="px-4 py-3 text-sm text-gray-600 border-b">
-                            <span className="px-2 py-1 bg-gray-100 rounded text-xs font-mono">
+                        <tr key={col} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'} hover:bg-gradient-to-r hover:from-green-50/30 hover:to-emerald-50/30 transition-all duration-150`}>
+                          <td className="px-6 py-4 text-sm font-semibold text-gray-900 border-b border-gray-100">{col}</td>
+                          <td className="px-6 py-4 text-sm text-gray-600 border-b border-gray-100">
+                            <span className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-slate-100 rounded-lg text-xs font-mono font-semibold shadow-sm">
                               {col.includes('date') ? 'date' : col.includes('amount') || col.includes('premium') ? 'numeric' : col.includes('email') ? 'varchar(255)' : 'text'}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-500 border-b">NULL</td>
+                          <td className="px-6 py-4 text-sm text-gray-500 border-b border-gray-100 italic">NULL</td>
                         </tr>
                       ))}
                     </tbody>
@@ -659,12 +683,12 @@ export default function Home() {
           )}
 
           {/* Footer with pagination */}
-          <div className="border-t border-gray-200 bg-gray-50 px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-sm">
-            <div className="text-gray-600">
-              Page <span className="font-semibold">1</span> of <span className="font-semibold">1</span>
+          <div className="border-t border-gray-200/50 bg-gradient-to-r from-white via-gray-50 to-white backdrop-blur-sm px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm shadow-lg">
+            <div className="text-gray-600 font-medium">
+              Page <span className="font-bold text-[#009E49]">1</span> of <span className="font-bold text-[#009E49]">1</span>
             </div>
-            <div className="text-gray-600">
-              <span className="font-semibold">{filteredData.length}</span> rows {searchTerm && `(filtered from ${currentTableData.length})`}
+            <div className="text-gray-600 font-medium">
+              <span className="font-bold text-[#009E49]">{filteredData.length}</span> rows {searchTerm && `(filtered from ${currentTableData.length})`}
             </div>
           </div>
         </div>
