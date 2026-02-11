@@ -269,7 +269,7 @@ export default function Home() {
       <nav className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200/50 flex items-center px-4 lg:px-6 gap-4 flex-shrink-0 shadow-lg shadow-gray-200/50">
         <div className="flex items-center gap-4">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#009E49] to-[#F4C400] rounded-xl blur-md opacity-25 group-hover:opacity-40 transition-opacity"></div>
+            <div className="absolute inset-0 rounded-xl blur-md opacity-25 group-hover:opacity-40 transition-opacity"></div>
             <img 
               src="/images_PhilHealth_Logo.png" 
               alt="PhilHealth - Your Partner in Health" 
